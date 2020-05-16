@@ -15,15 +15,15 @@ setup(
     download_url='https://github.com/alswang18/wang_ds_toolbox/archive/v_0.1.0.tar.gz',
     # Keywords that define your package best
     keywords=['Data Science', 'Random Forests', 'Visualizations'],
-    install_requires=[            # I get to this in a second
+    install_requires=[ # I get to this in a second
         'scikit-learn', 'tqdm', 'Pillow', 'numpy', 'pandas', 'ipython', 'more-itertools', 'isoweek', 'sklearn-pandas', 'pandas-datareader', 'pandas-profiling', 'pandas-summary', 'bcolz', 'graphviz', 'matplotlib'
     ],
     classifiers=[
         # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 2 - Pre-Alpha',
         # Define that your audience are developers
-        'Intended Audience :: Data Scientists',
-        'Topic :: Data Science :: Data Science Pipeline tools',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Libraries :: Python Modules',
         'License :: OSI Approved :: MIT License',   # Again, pick a license
         # Specify which pyhton versions that you want to support
         'Programming Language :: Python :: 3.7',

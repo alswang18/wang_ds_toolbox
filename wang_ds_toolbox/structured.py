@@ -1,5 +1,6 @@
 # credits https://github.com/fastai/fastai/blob/master/old/fastai/structured.py
 import tqdm as tq
+from pathlib import Path
 from sklearn.tree import export_graphviz
 from sklearn.ensemble import _forest
 from pandas.api.types import is_string_dtype, is_numeric_dtype, is_categorical_dtype
@@ -39,6 +40,46 @@ from IPython.display import display
 
 from matplotlib import pyplot as plt, rcParams, animation
 from ipywidgets import interact, interactive, fixed, widgets
+from dataclasses import dataclass
+
+
+@dataclass
+class TabularProc():
+    "A processor for tabular dataframes."
+    cat_names: StrList
+    cont_names: StrList
+
+    def __call__(self, df: DataFrame, test: bool = False):
+        "Apply the correct function to `df` depending on `test`."
+        func = self.apply_test if test else self.apply_train
+        func(df)
+
+    def apply_train(self, df: DataFrame):
+        "Function applied to `df` if it's the train set."
+        raise NotImplementedError
+
+    def apply_test(self, df: DataFrame):
+        "Function applied to `df` if it's the test set."
+        self.apply_train(df)
+
+
+class Categorify(TabularProc):
+    "Transform the categorical variables to that type."
+
+    def apply_train(self, df: DataFrame):
+        "Transform `self.cat_names` columns in categorical."
+        self.categories = {}
+        for n in self.cat_names:
+            df.loc[:, n] = df.loc[:, n].astype('category').cat.as_ordered()
+            self.categories[n] = df[n].cat.categories
+
+    def apply_test(self, df: DataFrame):
+        "Transform `self.cat_names` columns in categorical using the codes decided in `apply_train`."
+        for n in self.cat_names:
+            df.loc[:, n] = pd.Categorical(
+                df[n], categories=self.categories[n], ordered=True)
+
+
 matplotlib.rc('animation', html='html5')
 np.set_printoptions(precision=5, linewidth=110, suppress=True)
 
