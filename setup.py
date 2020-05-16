@@ -12,7 +12,7 @@ setup(
     # Provide either the link to your github or to your website
     url='https://github.com/user/alswang18',
     # I explain this later on
-    download_url='https://github.com/user/reponame/archive/v_01.tar.gz',
+    download_url='https://github.com/alswang18/wang_ds_toolbox/archive/v_0.1.0.tar.gz',
     # Keywords that define your package best
     keywords=['Data Science', 'Random Forests', 'Visualizations'],
     install_requires=[            # I get to this in a second
