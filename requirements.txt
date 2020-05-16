@@ -1,0 +1,15 @@
+scikit-learn
+tqdm
+Pillow
+numpy
+pandas
+ipython
+more-itertools
+isoweek
+sklearn-pandas
+pandas-datareader
+pandas-profiling
+pandas-summary
+bcolz
+graphviz
+matplotlib
