@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name='wang_ds_toolbox',         # How you named your package folder (MyLib)
     packages=['wang_ds_toolbox'],   # Chose the same as "name"
-    version='0.1.1',      # Start with a small number and increase it with every change you make
+    version='0.1.2',      # Start with a small number and increase it with every change you make
     # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     license='MIT',
     # Give a short description about your library
@@ -16,7 +16,7 @@ setup(
     # Keywords that define your package best
     keywords=['Data Science', 'Random Forests', 'Visualizations'],
     install_requires=[  # I get to this in a second
-        'scikit-learn', 'tqdm', 'Pillow', 'numpy', 'pandas', 'ipython', 'more-itertools', 'isoweek', 'sklearn-pandas', 'pandas-datareader', 'pandas-profiling', 'pandas-summary', 'bcolz', 'graphviz', 'matplotlib'
+        'scikit-learn', 'tqdm', 'Pillow', 'numpy', 'pandas', 'ipython', 'more-itertools', 'isoweek', 'sklearn-pandas', 'pandas-datareader', 'pandas-profiling', 'pandas-summary', 'graphviz', 'matplotlib', 'treeinterpreter', 'pdpbox==0.1.0',
     ],
     classifiers=[
         # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package

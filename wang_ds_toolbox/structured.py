@@ -11,13 +11,14 @@ from tqdm import tqdm_notebook, tnrange
 from IPython.lib.deepreload import reload as dreload
 import PIL
 import numpy as np
-import bcolz
 import scipy
 import pandas as pd
+from pandas import DataFrame
 import sys
 import itertools
 import sys
 import re
+import math
 import seaborn as sns
 import matplotlib
 import IPython
@@ -36,11 +37,14 @@ from pandas_summary import DataFrameSummary
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 import IPython
 from IPython.display import display
-
+from treeinterpreter import treeinterpreter as ti
 
 from matplotlib import pyplot as plt, rcParams, animation
 from ipywidgets import interact, interactive, fixed, widgets
 from dataclasses import dataclass
+from typing import Collection
+
+StrList = Collection[str]
 
 
 @dataclass
@@ -121,14 +125,14 @@ def set_rf_samples(n):
     """ Changes Scikit learn's random forests to give each tree a random sample of
     n random rows.
     """
-    _forest._generate_sample_indices = (lambda rs, n_samples:
+    _forest._generate_sample_indices = (lambda rs, n_samples, n_samples_bootstrap:
                                         _forest.check_random_state(rs).randint(0, n_samples, n))
 
 
 def reset_rf_samples():
     """ Undoes the changes produced by set_rf_samples.
     """
-    _forest._generate_sample_indices = (lambda rs, n_samples:
+    _forest._generate_sample_indices = (lambda rs, n_samples, n_samples_bootstrap:
                                         _forest.check_random_state(rs).randint(0, n_samples, n_samples))
 
 
