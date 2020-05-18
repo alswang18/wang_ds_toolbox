@@ -10,6 +10,7 @@ sklearn-pandas
 pandas-datareader
 pandas-profiling
 pandas-summary
-bcolz
 graphviz
 matplotlib
+treeinterpreter
+pdpbox
